@@ -14,23 +14,23 @@ This project is using these third party Libraries
 
 ### Steps For installation and Running
 
-# 1- First clone and download the repo
+##### 1- First clone and download the repo
 
-# 2- once downloaded navigate to the project folder with the cmd in the terminal
+##### 2- once downloaded navigate to the project folder with the cmd in the terminal
 
 ```
     cd "INSERT HERE PROJECT ROUTE"
 ```
 
-# 3- RUN
+##### 3- RUN
 
 ```
     Pod install
 ```
 
-# 4- Open the project in xcode and click on Build or Command(⌘) + B
+##### 4- Open the project in xcode and click on Build or Command(⌘) + B
 
-# 5- Now you are all set, run the Project. 
+##### 5- Now you are all set, run the Project. 
 
 
 
