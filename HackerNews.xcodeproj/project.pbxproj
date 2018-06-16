@@ -8,6 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		C616E8E420D4CA8F00508347 /* Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = C616E8E320D4CA8F00508347 /* Tools.swift */; };
+		C616E8E620D4CC3500508347 /* HackerNews.swift in Sources */ = {isa = PBXBuildFile; fileRef = C616E8E520D4CC3500508347 /* HackerNews.swift */; };
+		C616E8E820D4D04A00508347 /* ListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C616E8E720D4D04A00508347 /* ListController.swift */; };
+		C616E8EC20D4D09B00508347 /* NewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C616E8EA20D4D09B00508347 /* NewsCell.swift */; };
+		C616E8ED20D4D09B00508347 /* NewsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C616E8EB20D4D09B00508347 /* NewsCell.xib */; };
+		C616E8EF20D4D3C800508347 /* NewsDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C616E8EE20D4D3C800508347 /* NewsDetailController.swift */; };
+		C616E8F120D4D9E700508347 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = C616E8F020D4D9E700508347 /* News.swift */; };
+		C616E8F320D4E09700508347 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = C616E8F220D4E09700508347 /* Reachability.swift */; };
 		C6925EAB20D4C22A007C16C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6925EAA20D4C22A007C16C9 /* AppDelegate.swift */; };
 		C6925EAD20D4C22A007C16C9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6925EAC20D4C22A007C16C9 /* ViewController.swift */; };
 		C6925EB020D4C22A007C16C9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6925EAE20D4C22A007C16C9 /* Main.storyboard */; };
@@ -41,6 +48,13 @@
 		710BE12929CBDE9F1F81B5D1 /* Pods_HackerNewsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HackerNewsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BE6E9049D9C0B20CB3C86A8 /* Pods-HackerNews.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HackerNews.release.xcconfig"; path = "Pods/Target Support Files/Pods-HackerNews/Pods-HackerNews.release.xcconfig"; sourceTree = "<group>"; };
 		C616E8E320D4CA8F00508347 /* Tools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tools.swift; sourceTree = "<group>"; };
+		C616E8E520D4CC3500508347 /* HackerNews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HackerNews.swift; sourceTree = "<group>"; };
+		C616E8E720D4D04A00508347 /* ListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListController.swift; sourceTree = "<group>"; };
+		C616E8EA20D4D09B00508347 /* NewsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCell.swift; sourceTree = "<group>"; };
+		C616E8EB20D4D09B00508347 /* NewsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsCell.xib; sourceTree = "<group>"; };
+		C616E8EE20D4D3C800508347 /* NewsDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailController.swift; sourceTree = "<group>"; };
+		C616E8F020D4D9E700508347 /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
+		C616E8F220D4E09700508347 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		C6925EA720D4C22A007C16C9 /* HackerNews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HackerNews.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6925EAA20D4C22A007C16C9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C6925EAC20D4C22A007C16C9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -105,6 +119,7 @@
 		C616E8DE20D4C4E600508347 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				C616E8F020D4D9E700508347 /* News.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -112,6 +127,7 @@
 		C616E8E020D4C4F400508347 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C616E8E920D4D06D00508347 /* Cells */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -119,6 +135,8 @@
 		C616E8E120D4C4FD00508347 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				C616E8E720D4D04A00508347 /* ListController.swift */,
+				C616E8EE20D4D3C800508347 /* NewsDetailController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -127,8 +145,19 @@
 			isa = PBXGroup;
 			children = (
 				C616E8E320D4CA8F00508347 /* Tools.swift */,
+				C616E8E520D4CC3500508347 /* HackerNews.swift */,
+				C616E8F220D4E09700508347 /* Reachability.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		C616E8E920D4D06D00508347 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				C616E8EA20D4D09B00508347 /* NewsCell.swift */,
+				C616E8EB20D4D09B00508347 /* NewsCell.xib */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		C6925E9E20D4C22A007C16C9 = {
@@ -296,6 +325,7 @@
 			files = (
 				C6925EB520D4C22D007C16C9 /* LaunchScreen.storyboard in Resources */,
 				C6925EB220D4C22D007C16C9 /* Assets.xcassets in Resources */,
+				C616E8ED20D4D09B00508347 /* NewsCell.xib in Resources */,
 				C6925EB020D4C22A007C16C9 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -330,6 +360,7 @@
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SwipeCellKit/SwipeCellKit.framework",
+				"${BUILT_PRODUCTS_DIR}/Toast-Swift/Toast_Swift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -339,6 +370,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwipeCellKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Toast_Swift.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -371,7 +403,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				C616E8E420D4CA8F00508347 /* Tools.swift in Sources */,
+				C616E8E820D4D04A00508347 /* ListController.swift in Sources */,
+				C616E8F120D4D9E700508347 /* News.swift in Sources */,
 				C6925EAD20D4C22A007C16C9 /* ViewController.swift in Sources */,
+				C616E8E620D4CC3500508347 /* HackerNews.swift in Sources */,
+				C616E8F320D4E09700508347 /* Reachability.swift in Sources */,
+				C616E8EF20D4D3C800508347 /* NewsDetailController.swift in Sources */,
+				C616E8EC20D4D09B00508347 /* NewsCell.swift in Sources */,
 				C6925EAB20D4C22A007C16C9 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

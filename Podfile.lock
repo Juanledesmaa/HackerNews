@@ -10,6 +10,7 @@ PODS:
   - RealmSwift (3.3.2):
     - Realm (= 3.3.2)
   - SwipeCellKit (2.2.0)
+  - Toast-Swift (3.0.1)
 
 DEPENDENCIES:
   - Alamofire
@@ -17,6 +18,7 @@ DEPENDENCIES:
   - ObjectMapper
   - RealmSwift
   - SwipeCellKit
+  - Toast-Swift (~> 3.0.1)
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
@@ -26,6 +28,7 @@ SPEC REPOS:
     - Realm
     - RealmSwift
     - SwipeCellKit
+    - Toast-Swift
 
 SPEC CHECKSUMS:
   Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
@@ -34,7 +37,8 @@ SPEC CHECKSUMS:
   Realm: d927fbf66df5532cfafc08afb5f7e53ded37b894
   RealmSwift: 4e903a494e05d866581d69ad6f7e7b879d446baf
   SwipeCellKit: 8ae09401e1137566b187980d824310129233c959
+  Toast-Swift: ba0b01b095aada709d915f9beb1d38184a2721c3
 
-PODFILE CHECKSUM: 351d76a3af5ec411ba43ff46d6ccdc7b3e42b671
+PODFILE CHECKSUM: 7f78596c26a65270a16c8200a37c1cab2af6458a
 
 COCOAPODS: 1.5.0

@@ -11,4 +11,6 @@ target 'HackerNews' do
   pod 'RealmSwift'
   pod 'NVActivityIndicatorView'
   pod 'SwipeCellKit'
+  pod 'Toast-Swift', '~> 3.0.1'
+  
 end
