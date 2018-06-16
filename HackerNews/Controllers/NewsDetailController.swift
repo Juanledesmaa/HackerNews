@@ -14,7 +14,12 @@ class NewsDetailController: UIViewController, UIWebViewDelegate {
     var passedLink = ""
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.loadLink()
+        if (checkConnection()) {
+            self.loadLink()
+        } else {
+            self.view.makeToast("No connection available")
+        }
+        
         // Do any additional setup after loading the view.
     }
 
@@ -38,16 +43,4 @@ class NewsDetailController: UIViewController, UIWebViewDelegate {
         
         return true
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

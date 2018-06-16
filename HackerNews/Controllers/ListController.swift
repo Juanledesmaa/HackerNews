@@ -17,30 +17,40 @@ class ListController: UIViewController {
     let realm = migrateRealm()
     @IBOutlet weak var tableview: UITableView!
     var newsArray : [News] = [News]()
+    var deletedNews : [Deleted] = [Deleted]()
     
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
-//        refreshControl.addTarget(self, action: #selector(self.loadNews(_:)), for: UIControlEvents.valueChanged)
         refreshControl.addTarget(self, action: #selector(self.handleRefresh(_:)), for: .valueChanged)
-        refreshControl.tintColor = UIColor.cyan
+        refreshControl.tintColor = UIColor.darkGray
         return refreshControl
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(Realm.Configuration.defaultConfiguration.fileURL)
         self.setupUI()
         self.loadNews()
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func setupUI() {
+        self.navigationItem.rightBarButtonItem = nil
+        let btnInfo = UIBarButtonItem(image: UIImage(named: "info"), style: .plain, target: self, action:#selector(self.gotoInfo))
+        btnInfo.tintColor = UIColor.black
+        self.navigationItem.rightBarButtonItem  = btnInfo
         tableview.register(UINib(nibName: "NewsCell", bundle: nil), forCellReuseIdentifier: "NewsCell")
         self.tableview.addSubview(self.refreshControl)
+    }
+    
+    @objc func gotoInfo() {
+        
+        let vc =  self.storyboard?.instantiateViewController(withIdentifier: "InfoController") as! InfoController
+        self.navigationController?.pushViewController(vc, animated: true)
+        
     }
     
     @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
@@ -51,13 +61,26 @@ class ListController: UIViewController {
                 case .success(let data):
                     let json = data as! NSDictionary
                     let data = Mapper<News>().mapArray(JSONObject: json.object(forKey: "hits"))
-                    self.newsArray = data!
+
                     let dateFormatter = DateFormatter()
                     dateFormatter.locale = Locale(identifier: "en_US_POSIX")
                     dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-                    self.newsArray = (data?.sorted(by: { dateFormatter.date(from:$0.createdAt)!.compare(dateFormatter.date(from:$1.createdAt)!) == .orderedDescending }))!
-                    self.tableview.reloadData()
-                    refreshControl.endRefreshing()
+                    
+                    try! self.realm.write {
+                        var news = self.realm.objects(News.self)
+                        self.realm.delete(news)
+                        self.realm.add(data!)
+                        news = self.realm.objects(News.self)
+                        let deleted = self.realm.objects(Deleted.self)
+                        self.newsArray = Array(news)
+                        self.deletedNews = Array(deleted)
+                        self.checkDeleted()
+                        self.newsArray = (self.newsArray.sorted(by: { dateFormatter.date(from:$0.createdAt)!.compare(dateFormatter.date(from:$1.createdAt)!) == .orderedDescending }))
+                        self.tableview.reloadData()
+                        refreshControl.endRefreshing()
+                    }
+                    
+                    
                 case .failure(let error):
                     print(error)
                     self.view.makeToast(error.localizedDescription)
@@ -65,21 +88,22 @@ class ListController: UIViewController {
                 }
             }
         } else {
-
+            let news = self.realm.objects(News.self)
+            self.newsArray = Array(news)
             self.view.makeToast("No connection available, showing last downloaded posts")
             refreshControl.endRefreshing()
         }
-
+    }
     
-    
-    
-    
-    
+    func checkDeleted() {
+        for j in 0..<self.deletedNews.count {
+            self.newsArray = self.newsArray.filter {$0.storyId != self.deletedNews[j].storyId}
+        }
     }
     
     @objc func loadNews() {
         startLoading(view: self.view)
-        
+        self.newsArray = [News]()
         if (checkConnection()) {
             Alamofire.request(HackerNews.Api.search, method: .get).responseJSON { response in
                 switch response.result {
@@ -88,14 +112,23 @@ class ListController: UIViewController {
                     let json = data as! NSDictionary
                     let data = Mapper<News>().mapArray(JSONObject: json.object(forKey: "hits"))
                     
-                    self.newsArray = data!
-                    
                     let dateFormatter = DateFormatter()
                     dateFormatter.locale = Locale(identifier: "en_US_POSIX")
                     dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
                     
-                    self.newsArray = (data?.sorted(by: { dateFormatter.date(from:$0.createdAt)!.compare(dateFormatter.date(from:$1.createdAt)!) == .orderedDescending }))!
-                    self.tableview.reloadData()
+                    try! self.realm.write {
+                        var news = self.realm.objects(News.self)
+                        self.realm.delete(news)
+                        self.realm.add(data!)
+                        news = self.realm.objects(News.self)
+                        let deleted = self.realm.objects(Deleted.self)
+                        self.newsArray = Array(news)
+                        self.deletedNews = Array(deleted)
+                        self.checkDeleted()
+                        self.newsArray = (self.newsArray.sorted(by: { dateFormatter.date(from:$0.createdAt)!.compare(dateFormatter.date(from:$1.createdAt)!) == .orderedDescending }))
+                        self.tableview.reloadData()
+                    }
+                    
                 case .failure(let error):
                     print(error)
                     stopLoading(view: self.view)
@@ -103,7 +136,9 @@ class ListController: UIViewController {
                 }
             }
         } else {
-            
+            stopLoading(view: self.view)
+            let news = self.realm.objects(News.self)
+            self.newsArray = Array(news)
             self.view.makeToast("No connection available, showing last downloaded posts")
         }
     }
@@ -137,12 +172,23 @@ extension ListController : UITableViewDelegate, UITableViewDataSource, SwipeTabl
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
         guard orientation == .right else { return nil }
         
-        let section = indexPath.section
         let index = indexPath.row
-//        let calendars : [CalendarModel] = self.dictCalendars[self.groupKeyArray[section]]!
-//        let currentCalendar : CalendarModel = calendars[index]
+        var options = SwipeTableOptions()
+        options.expansionStyle = .destructive(automaticallyDelete: true)
         
         let deleteAction = SwipeAction(style: .destructive, title: "Delete") { action, indexPath in
+
+            let deleted : Deleted = Deleted()
+            deleted.storyId = self.newsArray[index].storyId
+            deleted.author = self.newsArray[index].author
+
+            try! self.realm.write {
+                print("DELETED ADDED")
+                self.realm.add(deleted)
+            }
+
+            self.newsArray.remove(at: index)
+            action.fulfill(with: .delete)
         }
         
         
@@ -154,6 +200,7 @@ extension ListController : UITableViewDelegate, UITableViewDataSource, SwipeTabl
         return [deleteAction]
     }
     
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 90.5
     }
@@ -162,10 +209,23 @@ extension ListController : UITableViewDelegate, UITableViewDataSource, SwipeTabl
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
         let index = indexPath.row
-        self.tabBarController?.navigationItem.title = ""
         let vc =  self.storyboard?.instantiateViewController(withIdentifier: "NewsDetailController") as! NewsDetailController
-        vc.passedLink = self.newsArray[index].storyUrl
-        self.navigationController?.pushViewController(vc, animated: true)
+        
+        if (self.newsArray[index].storyUrl.isEmpty || self.newsArray[index].storyUrl == "") {
+            self.view.makeToast("the link for this news is not available")
+        } else {
+            vc.passedLink = self.newsArray[index].storyUrl
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+        
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsOptionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeTableOptions {
+        
+        var options = SwipeTableOptions()
+        options.expansionStyle = .destructive
+        options.transitionStyle = .border
+        return options
     }
     
 }

@@ -17,7 +17,7 @@ func startLoading(view : UIView) {
     let frame = view.frame
     let centerY = (frame.height / 2)
     let centerX = (frame.width / 2)
-    let activity = NVActivityIndicatorView(frame: CGRect(x: centerX - 50, y: centerY - 50, width: 100, height: 100), type: NVActivityIndicatorType(rawValue: NVActivityIndicatorType.ballScaleMultiple.rawValue), color: UIColor.cyan, padding: 0)
+    let activity = NVActivityIndicatorView(frame: CGRect(x: centerX - 50, y: centerY - 50, width: 100, height: 100), type: NVActivityIndicatorType(rawValue: NVActivityIndicatorType.ballScaleMultiple.rawValue), color: UIColor.darkGray , padding: 0)
     activity.tag = 979
     view.isUserInteractionEnabled = false
     view.addSubview(activity)
@@ -36,9 +36,9 @@ func stopLoading(view : UIView) {
 
 func migrateRealm() -> Realm {
     let config = Realm.Configuration(
-        schemaVersion: 5,
+        schemaVersion: 7,
         migrationBlock: { migration, oldSchemaVersion in
-            if (oldSchemaVersion < 5) {}
+            if (oldSchemaVersion < 7) {}
     })
     
     Realm.Configuration.defaultConfiguration = config

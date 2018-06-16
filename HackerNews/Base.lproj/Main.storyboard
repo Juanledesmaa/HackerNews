@@ -78,6 +78,116 @@
             </objects>
             <point key="canvasLocation" x="708" y="-411.544227886057"/>
         </scene>
+        <!--Info Controller-->
+        <scene sceneID="lIb-wc-ffV">
+            <objects>
+                <viewController storyboardIdentifier="InfoController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="SJv-Od-IPC" customClass="InfoController" customModule="HackerNews" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mK7-Vb-Ol5">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hackernews" translatesAutoresizingMaskIntoConstraints="NO" id="1Ki-V1-gw0">
+                                <rect key="frame" x="137" y="283" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="sQZ-ZA-bkF"/>
+                                    <constraint firstAttribute="width" constant="100" id="vKm-1F-IgC"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HackerNews" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FgR-Hr-8R6">
+                                <rect key="frame" x="8" y="391" width="359" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="4fE-PC-Akg"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Test project created for ReignDesign" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KDL-F0-MS0">
+                                <rect key="frame" x="8" y="439" width="359" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="3aw-eN-iod"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="linkedin-logo" translatesAutoresizingMaskIntoConstraints="NO" id="olT-Lr-Xcd">
+                                <rect key="frame" x="16" y="490" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="7sw-MR-wGq"/>
+                                    <constraint firstAttribute="width" constant="40" id="9hL-Zs-dz5"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="github" translatesAutoresizingMaskIntoConstraints="NO" id="36o-NR-xU0">
+                                <rect key="frame" x="16" y="545" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="nB7-9V-kcd"/>
+                                    <constraint firstAttribute="width" constant="40" id="t5b-1w-Rjc"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qyq-wV-pth">
+                                <rect key="frame" x="86" y="490" width="259" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="hZp-D1-sHR"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="juanmanuelledesma"/>
+                                <connections>
+                                    <action selector="btnLinkedInPressed:" destination="SJv-Od-IPC" eventType="touchUpInside" id="voN-3n-nbM"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KMG-LQ-HgW">
+                                <rect key="frame" x="86" y="545" width="259" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="J20-Vb-AFw"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="github.com/Juanledesma"/>
+                                <connections>
+                                    <action selector="btnGitHubPressed:" destination="SJv-Od-IPC" eventType="touchUpInside" id="wcO-Cj-uFB"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create by Juan Ledesma (Umbranito@gmail.com)." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="msP-j5-gJP">
+                                <rect key="frame" x="0.0" y="607" width="375" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="cyM-oq-1Xa"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Qyq-wV-pth" firstAttribute="top" secondItem="KDL-F0-MS0" secondAttribute="bottom" constant="30" id="4Zt-Ax-LFc"/>
+                            <constraint firstItem="EZD-1i-VDr" firstAttribute="trailing" secondItem="Qyq-wV-pth" secondAttribute="trailing" constant="30" id="JIH-cg-xa5"/>
+                            <constraint firstItem="olT-Lr-Xcd" firstAttribute="top" secondItem="KDL-F0-MS0" secondAttribute="bottom" constant="30" id="JyT-rO-Ogy"/>
+                            <constraint firstItem="36o-NR-xU0" firstAttribute="top" secondItem="olT-Lr-Xcd" secondAttribute="bottom" constant="15" id="MHX-ld-6fP"/>
+                            <constraint firstItem="KMG-LQ-HgW" firstAttribute="top" secondItem="Qyq-wV-pth" secondAttribute="bottom" constant="15" id="O0B-tL-PeB"/>
+                            <constraint firstItem="36o-NR-xU0" firstAttribute="leading" secondItem="EZD-1i-VDr" secondAttribute="leading" constant="16" id="STw-9D-565"/>
+                            <constraint firstItem="1Ki-V1-gw0" firstAttribute="centerX" secondItem="mK7-Vb-Ol5" secondAttribute="centerX" id="VJK-wy-FEF"/>
+                            <constraint firstItem="FgR-Hr-8R6" firstAttribute="top" secondItem="1Ki-V1-gw0" secondAttribute="bottom" constant="8" id="alK-zw-zIY"/>
+                            <constraint firstItem="EZD-1i-VDr" firstAttribute="bottom" secondItem="msP-j5-gJP" secondAttribute="bottom" constant="20" id="aoB-kv-F00"/>
+                            <constraint firstItem="FgR-Hr-8R6" firstAttribute="leading" secondItem="EZD-1i-VDr" secondAttribute="leading" constant="8" id="dy1-E1-xYu"/>
+                            <constraint firstItem="msP-j5-gJP" firstAttribute="trailing" secondItem="EZD-1i-VDr" secondAttribute="trailing" id="eL7-eO-eYY"/>
+                            <constraint firstItem="EZD-1i-VDr" firstAttribute="trailing" secondItem="KMG-LQ-HgW" secondAttribute="trailing" constant="30" id="hQ8-90-AgJ"/>
+                            <constraint firstItem="EZD-1i-VDr" firstAttribute="trailing" secondItem="KDL-F0-MS0" secondAttribute="trailing" constant="8" id="j9n-u2-Mht"/>
+                            <constraint firstItem="EZD-1i-VDr" firstAttribute="trailing" secondItem="FgR-Hr-8R6" secondAttribute="trailing" constant="8" id="jBo-Al-Xe1"/>
+                            <constraint firstItem="msP-j5-gJP" firstAttribute="leading" secondItem="EZD-1i-VDr" secondAttribute="leading" id="jf0-PG-MGm"/>
+                            <constraint firstItem="1Ki-V1-gw0" firstAttribute="centerY" secondItem="mK7-Vb-Ol5" secondAttribute="centerY" id="oqN-1O-6Zm"/>
+                            <constraint firstItem="KMG-LQ-HgW" firstAttribute="leading" secondItem="36o-NR-xU0" secondAttribute="trailing" constant="30" id="qLH-CI-O0B"/>
+                            <constraint firstItem="Qyq-wV-pth" firstAttribute="leading" secondItem="olT-Lr-Xcd" secondAttribute="trailing" constant="30" id="r3Z-QJ-m31"/>
+                            <constraint firstItem="KDL-F0-MS0" firstAttribute="leading" secondItem="EZD-1i-VDr" secondAttribute="leading" constant="8" id="rqN-v3-MBL"/>
+                            <constraint firstItem="KDL-F0-MS0" firstAttribute="top" secondItem="FgR-Hr-8R6" secondAttribute="bottom" constant="8" id="tr2-nI-Fv2"/>
+                            <constraint firstItem="olT-Lr-Xcd" firstAttribute="leading" secondItem="EZD-1i-VDr" secondAttribute="leading" constant="16" id="vNU-7j-Jjj"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="EZD-1i-VDr"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lZ1-u3-aW9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1400.8" y="-412.44377811094455"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="v0t-t6-if9">
             <objects>
@@ -95,4 +205,9 @@
             <point key="canvasLocation" x="-778" y="-416"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="github" width="40" height="40"/>
+        <image name="hackernews" width="200" height="200"/>
+        <image name="linkedin-logo" width="40" height="40"/>
+    </resources>
 </document>
