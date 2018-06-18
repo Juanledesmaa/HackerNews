@@ -147,7 +147,7 @@
                                     <action selector="btnGitHubPressed:" destination="SJv-Od-IPC" eventType="touchUpInside" id="wcO-Cj-uFB"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create by Juan Ledesma (Umbranito@gmail.com)." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="msP-j5-gJP">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Created by Juan Ledesma (Umbranito@gmail.com)." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="msP-j5-gJP">
                                 <rect key="frame" x="0.0" y="607" width="375" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="cyM-oq-1Xa"/>
